@@ -4,7 +4,6 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import tetris.BoardInfo;
 import tetris.Board;
 import tetris.ControlPanel;
 import tetris.GameStatusInfo;
@@ -15,6 +14,7 @@ public class TetrisFrame extends JFrame{
 	
 	JPanel gamePanel = new JPanel();
 	ControlPanel controlPanel = new ControlPanel();		
+	Board tetrisBoard = new Board();
 
 	public TetrisFrame() {
 		super();
@@ -22,7 +22,7 @@ public class TetrisFrame extends JFrame{
 	}
 
 	private void initialize() {
-		gamePanel.add(BoardInfo.getInstance().getTetrisBoard());
+		gamePanel.add(tetrisBoard);
 		setTitle("Tetris");
 		setBackground(Color.lightGray);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
