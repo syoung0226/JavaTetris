@@ -4,7 +4,7 @@ import java.awt.Canvas;
 
 import tetris.Cell;
 
-public class Block {
+public abstract class Block {
 	/*
 	 * TODO Block 추상클래스 
 	 * Block을 상속받는 여러개의 Block 종류 구현하기
@@ -13,20 +13,23 @@ public class Block {
 	 * 예를들어 키보드 위 화살표를 눌렀을 때 바뀌는 모양은 다 제각각이다.
 	 */
 	
-	private Cell one;
-	private Cell two;
-	private Cell three;
-	private Cell four;
-
+	private Cell cells[] = new Cell[4];
 	
-	public Block(){
-		intialize();
-	}
-
-	private void intialize() {
-	}
-		
+	public Block(){	}
+	
 	public void paintBlock(Canvas canvas){
 		//TODO paintCell을 호출하기
 	}
+	
+	public void downMove(){
+	}
+	public void leftMove(){
+	}
+	public void rightMove(){
+	}
+	public void bottomMove(){
+	}
+	
+	public abstract void changeShape();
+	
 }
