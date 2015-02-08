@@ -3,20 +3,12 @@ package tetris;
 import java.awt.Canvas;
 
 public class Block {
-	enum BlockShape {NoneBlock, SquerBlock, LineBlock, ZBlock, SBlock, LeftLBlock, RightLBlock}
-	
-	private BlockShape blockShapeName;
 	
 	public Block(){
 		intialize();
 	}
 
 	private void intialize() {
-		blockShapeName = BlockShape.NoneBlock;
-	}
-	
-	public BlockShape getBloackShapeName(){
-		return this.blockShapeName;
 	}
 	
 	//TetrisBlock은 여러 셀을 가지고 있음
