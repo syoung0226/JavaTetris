@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class ControlPanel extends JPanel implements ActionListener{
+	//TODO Key로 제어하는것 추가하기
 
 	private Button startBtn = new Button("start");
 	private Button endBtn = new Button("end");

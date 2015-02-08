@@ -22,6 +22,7 @@ public class Board extends Canvas{
 	}
 	
 	public void paint(Graphics g) {
+		//TODO cell들을 눈에 보이기 위해 임시로 넣은 코드. 나중에 삭제하기
 		int i;
 		for (i = 0; i < HEIGHT / CELL; i++) {
 			g.drawLine((int) 0, (int) (i * CELL), (int) (WIDTH), (int) (i * CELL));
