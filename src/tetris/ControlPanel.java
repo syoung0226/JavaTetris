@@ -30,10 +30,10 @@ public class ControlPanel extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == startBtn) {
 			System.out.println("start");
-			TimerInfo.getInstance().timeStart();
+			TimerControlInfo.getInstance().timeStart();
 		} else if (e.getSource() == endBtn) {
 			System.out.println("end");
-			TimerInfo.getInstance().timerStop();
+			TimerControlInfo.getInstance().timerStop();
 		}
 	}
 }

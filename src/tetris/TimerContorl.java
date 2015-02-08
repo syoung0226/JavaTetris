@@ -5,11 +5,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
-public class TTimer implements ActionListener {
+public class TimerContorl implements ActionListener {
 
 	private Timer timer;
 	
-	public TTimer(){
+	public TimerContorl(){
 		intialize();
 	}
 	

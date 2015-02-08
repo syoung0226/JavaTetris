@@ -3,11 +3,11 @@ package tetris;
 import javax.swing.JLabel;
 
 @SuppressWarnings("serial")
-public class TStatusBar extends JLabel{
+public class GameStatus extends JLabel{
 	
 	private int detroyedLineNumber;
 
-	public TStatusBar(){
+	public GameStatus(){
 		super();
 		initialize();
 	}
