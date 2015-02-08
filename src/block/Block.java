@@ -1,6 +1,8 @@
-package tetris;
+package block;
 
 import java.awt.Canvas;
+
+import tetris.Cell;
 
 public class Block {
 	

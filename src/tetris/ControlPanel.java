@@ -1,5 +1,6 @@
 package tetris;
 
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,8 +10,8 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class ControlPanel extends JPanel implements ActionListener{
 
-	private TButton startBtn = new TButton("start");
-	private TButton endBtn = new TButton("end");
+	private Button startBtn = new Button("start");
+	private Button endBtn = new Button("end");
 
 	public ControlPanel() {
 		super();
