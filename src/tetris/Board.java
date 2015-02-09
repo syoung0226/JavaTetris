@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 import block.Block;
+import block.Cell;
 
 @SuppressWarnings("serial")
 public class Board extends Canvas{
@@ -16,6 +17,7 @@ public class Board extends Canvas{
 	private int i = 0;
 	
 	private Block block;
+	private Cell blockCells[];
 	
 	//TODO 바닥으로 떨어진 Cell은 fillCell에 채워져 색칠 되기 
 //	private Cell fillCell[];
@@ -43,9 +45,10 @@ public class Board extends Canvas{
 			g.drawLine((int) (i * CELL), (int) 0, (int) (i * CELL),	(int) (HEIGHT));
 		}
 		if(block != null){
-			for(i=0; i< block.getCells().length; i++){
-				g.setColor(block.getCells()[i].getColor());
-				g.fillRect(block.getCells()[i].getX()*CELL, block.getCells()[i].getY()*CELL, CELL, CELL);
+			blockCells = block.getCells();
+			for(i=0; i< blockCells.length; i++){
+				g.setColor(blockCells[i].getColor());
+				g.fillRect(blockCells[i].getX()*CELL, blockCells[i].getY()*CELL, CELL, CELL);
 			}			
 		}
 	}
