@@ -4,6 +4,8 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import block.Block;
+
 @SuppressWarnings("serial")
 public class Board extends Canvas{
 	
@@ -13,6 +15,11 @@ public class Board extends Canvas{
 	
 	private int i = 0;
 	
+	private Block block;
+	
+	//TODO 바닥으로 떨어진 Cell은 fillCell에 채워져 색칠 되기 
+//	private Cell fillCell[];
+	
 	public Board() {
 		super();
 		initialize();
@@ -21,19 +28,25 @@ public class Board extends Canvas{
 	private void initialize() {
 		setSize((int) WIDTH, (int) HEIGHT);
 		setBackground(Color.orange);
+		block = null;
+	}
+	
+	public void setBlock(Block block){
+		this.block = block;
 	}
 	
 	public void paint(Graphics g) {
-		//TODO cell들을 눈에 보이기 위해 임시로 넣은 코드. 나중에 삭제하기
 		for (i = 0; i < HEIGHT / CELL; i++) {
 			g.drawLine((int) 0, (int) (i * CELL), (int) (WIDTH), (int) (i * CELL));
 		}
 		for (i = 0; i < WIDTH / CELL; i++) {
 			g.drawLine((int) (i * CELL), (int) 0, (int) (i * CELL),	(int) (HEIGHT));
 		}
-		for(i=0; i< 4; i++){
-			g.setColor(Color.blue);
-			g.fillRect(i*CELL, 0, CELL, CELL);			
+		if(block != null){
+			for(i=0; i< block.getCells().length; i++){
+				g.setColor(block.getCells()[i].getColor());
+				g.fillRect(block.getCells()[i].getX()*CELL, block.getCells()[i].getY()*CELL, CELL, CELL);
+			}			
 		}
 	}
 }

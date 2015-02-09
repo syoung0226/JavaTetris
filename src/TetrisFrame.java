@@ -20,12 +20,10 @@ public class TetrisFrame extends JFrame{
 	}
 
 	private void initialize() {
-		gamePanel.add(tetrisBoard);
 		setTitle("Tetris");
 		setBackground(Color.lightGray);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		add(gamePanel, "West");
-		add(controlPanel, "East");
+		add(controlPanel);		
 		setSize((int) (2*Board.WIDTH), (int) (Board.HEIGHT + 40));
 		setResizable(false);
 		setVisible(true);

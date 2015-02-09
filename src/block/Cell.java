@@ -27,9 +27,13 @@ public class Cell {
 	public void setY(int y) {this.y = y;}
 	
 	public void downY(){
-		this.y+=1;
-		System.out.println(this.y);
+		if(this.y > 18){
+			return;
+		}else{
+			this.y+=1;
+		}
 	}
+	public void leftX(){this.x+=1;}
 	
 	public void paintCell(Board board){
 		//TODO Cell 한 칸을 canvas에 색칠하는 함수

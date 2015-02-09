@@ -16,7 +16,7 @@ public class LineBlock extends Block{
 	public void initialize() {
 		// TODO Auto-generated method stub
 		for(i=0; i<Block.CELLNUM; i++){
-			cells[i] = new Cell(Color.blue, i,0);
+			cells[i] = new Cell(Color.blue, i+3,0);
 		}
 		super.setCells(cells);
 	}
