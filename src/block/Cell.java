@@ -26,14 +26,11 @@ public class Cell {
 	public int getY() {return y;}
 	public void setY(int y) {this.y = y;}
 	
-	public void downY(){
-		if(this.y > 18){
-			return;
-		}else{
-			this.y+=1;
-		}
-	}
-	public void leftX(){this.x+=1;}
+	public void leftX(){this.x-=1;}
+	public void downY(){this.y+=1;}
+	public void rigtX() {this.x+=1;}
+	
+	public void bottom(){this.y=19;}
 	
 	public void paintCell(Board board){
 		//TODO Cell 한 칸을 canvas에 색칠하는 함수
