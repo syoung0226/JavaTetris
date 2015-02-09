@@ -13,6 +13,9 @@ public class ControlPanel extends JPanel implements ActionListener{
 
 	private Button startBtn = new Button("start");
 	private Button endBtn = new Button("end");
+	
+	private TimerControl timerControl = new TimerControl();
+	private GameStatus gameStatus = new GameStatus();	
 
 	public ControlPanel() {
 		super();
@@ -25,16 +28,22 @@ public class ControlPanel extends JPanel implements ActionListener{
 		add(startBtn);
 		add(endBtn);
 		setBackground(Color.lightGray);
+		add(gameStatus);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == startBtn) {
 			System.out.println("start");
-			TimerControlInfo.getInstance().timeStart();
+			timerControl.timeStart();
+			startBtn.setLabel("restart");
+			
 		} else if (e.getSource() == endBtn) {
 			System.out.println("end");
-			TimerControlInfo.getInstance().timerStop();
+			timerControl.timerStop();
+			if(startBtn.getLabel().equals("restart")){
+				startBtn.setLabel("start");				
+			}
 		}
 	}
 }

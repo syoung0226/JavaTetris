@@ -1,4 +1,3 @@
-import java.awt.BorderLayout;
 import java.awt.Color;
 
 import javax.swing.JFrame;
@@ -6,7 +5,6 @@ import javax.swing.JPanel;
 
 import tetris.Board;
 import tetris.ControlPanel;
-import tetris.GameStatusInfo;
 
 
 @SuppressWarnings("serial")
@@ -28,8 +26,7 @@ public class TetrisFrame extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		add(gamePanel, "West");
 		add(controlPanel, "East");
-		add(GameStatusInfo.getinstance().getTetrisStatusBar(), BorderLayout.SOUTH);
-		setSize((int) (2*Board.WIDTH), (int) (Board.HEIGHT + 50));
+		setSize((int) (2*Board.WIDTH), (int) (Board.HEIGHT + 40));
 		setResizable(false);
 		setVisible(true);
 	}
