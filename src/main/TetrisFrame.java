@@ -2,7 +2,6 @@ package main;
 import java.awt.Color;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 import tetris.Board;
 import tetris.ControlPanel;
@@ -11,9 +10,7 @@ import tetris.ControlPanel;
 @SuppressWarnings("serial")
 public class TetrisFrame extends JFrame{
 	
-	JPanel gamePanel = new JPanel();
 	ControlPanel controlPanel = new ControlPanel();		
-	Board tetrisBoard = new Board();
 
 	public TetrisFrame() {
 		super();

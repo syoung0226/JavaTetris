@@ -10,6 +10,7 @@ import java.awt.event.KeyListener;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import block.Block;
 import block.LineBlock;
 
 @SuppressWarnings("serial")
@@ -18,15 +19,11 @@ public class ControlPanel extends JPanel implements ActionListener, KeyListener{
 	private Button startEndBtn = new Button("start");
 	private Button pauseResumeBtn = new Button("pause");
 	
-	private GameStatus gameStatus = new GameStatus();	
-	private Board tetrisBoard  = new Board();
-	
+	private Board tetrisBoard  = new Board();	
 	private Timer timer;
-	
-	private LineBlock lineBlock = new LineBlock();
+	private Block block;
 	
 	private int gameState; 
-	
 	private static final int running = 0;
 	private static final int stop = 1;
 	
@@ -36,30 +33,30 @@ public class ControlPanel extends JPanel implements ActionListener, KeyListener{
 	}
 
 	private void initialize() {
+		setFocusable( true ); 
+		timer = new Timer(400, this);
+		timer.start();
+
+		gameState = running;
+		//TODO 랜덤으로 block을 생성
+		block = new LineBlock();
+		paintBlock();
+
 		startEndBtn.addActionListener(this);
 		pauseResumeBtn.addActionListener(this);
 
 		add(startEndBtn, "West");
-		add(pauseResumeBtn, "West");
-		
-		setBackground(Color.lightGray);
-		
-		add(gameStatus, "West");
+		add(pauseResumeBtn, "West");		
 		add(tetrisBoard, "East");
 		
-		timer = new Timer(400, this);
-		gameState = stop;
-		
-		setFocusable( true ); 
-		addKeyListener(this);
-		
-		paintBlock();
+		setBackground(Color.lightGray);
+		addKeyListener(this);		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == timer){
-			lineBlock.downMove();
+			block.downMove();
 			paintBlock();
 		}
 		
@@ -83,35 +80,34 @@ public class ControlPanel extends JPanel implements ActionListener, KeyListener{
 			gameState = running;
 		}
 	}
-		
+	    
 	@Override
 	public void keyTyped(KeyEvent e) {}
+	@Override
+	public void keyReleased(KeyEvent e) {}
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
 		
 		if(e.getKeyCode() == KeyEvent.VK_LEFT){
-			lineBlock.leftMove();
+			block.leftMove();
 			paintBlock();
 			System.out.println("LEFT");
 		}else if(e.getKeyCode() == KeyEvent.VK_RIGHT){
-			lineBlock.rightMove();
+			block.rightMove();
 			paintBlock();
 			System.out.println("RIGHT");
 		}else if(e.getKeyCode() == KeyEvent.VK_SPACE){
-			lineBlock.bottomMove();
+			block.bottomMove();
 			paintBlock();
 			System.out.println("BOTTOM");
 		}else if(e.getKeyCode() == KeyEvent.VK_DOWN){
-			lineBlock.downMove();
+			block.downMove();
 			paintBlock();
 			System.out.println("DOWN");
 		}
 		
 	}
-	
-	@Override
-	public void keyReleased(KeyEvent e) {}
 	
 	
 	private void timerStart() {
@@ -122,7 +118,7 @@ public class ControlPanel extends JPanel implements ActionListener, KeyListener{
 	}
 	
 	private void paintBlock(){
-		tetrisBoard.setBlock(lineBlock);
+		tetrisBoard.setBlock(block);
 		tetrisBoard.repaint();		
 	}
 }
