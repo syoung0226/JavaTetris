@@ -2,8 +2,6 @@ package block;
 
 import java.awt.Color;
 
-import tetris.Board;
-
 public class Cell {
 	private Color color;
 	private int x;
@@ -31,8 +29,4 @@ public class Cell {
 	public void rigtX() {this.x+=1;}
 	
 	public void bottom(){this.y=19;}
-	
-	public void paintCell(Board board){
-		//TODO Cell 한 칸을 canvas에 색칠하는 함수
-	}
 }

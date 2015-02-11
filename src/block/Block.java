@@ -81,6 +81,7 @@ public abstract class Block {
 	}
 	
 	public void paintBlock(Board board){
-		//TODO call paintCell
+		board.setBlock(this);
+		board.repaint();
 	}
 }
