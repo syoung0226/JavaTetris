@@ -2,6 +2,8 @@ package block;
 
 import java.awt.Color;
 
+import tetris.Board;
+
 public abstract class Block {
 	/*
 	 * TODO Cell[0] : 가장 왼쪽 블럭
@@ -76,5 +78,9 @@ public abstract class Block {
 
 	public void setCell(Color color, int x, int y, int index){
 		this.cells[index] = new Cell(color, x, y);
+	}
+	
+	public void paintBlock(Board board){
+		//TODO call paintCell
 	}
 }

@@ -10,7 +10,7 @@ import tetris.ControlPanel;
 @SuppressWarnings("serial")
 public class TetrisFrame extends JFrame{
 	
-	ControlPanel controlPanel = new ControlPanel();		
+	private ControlPanel controlPanel;		
 
 	public TetrisFrame() {
 		super();
@@ -18,6 +18,7 @@ public class TetrisFrame extends JFrame{
 	}
 
 	private void initialize() {
+		controlPanel = new ControlPanel();
 		setTitle("Tetris");
 		setBackground(Color.lightGray);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
