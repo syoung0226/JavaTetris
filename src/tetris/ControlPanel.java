@@ -11,6 +11,13 @@ import block.LineBlock;
 
 @SuppressWarnings("serial")
 public class ControlPanel extends JPanel implements KeyListener{
+	
+	//TODO button class 만들기
+	//TODO keyClass도 만들기?!?!?
+	//TODO RandomBlock class 만들기
+	//TODO 각 block 마다 initialize 함수, change 함수 만들기
+	//TODO gameState를 알려주는 class 만들기
+	//TODO board에 block 쌓고 없애기 만들기
 		
 	private GameTimer timer;
 	
@@ -45,7 +52,6 @@ public class ControlPanel extends JPanel implements KeyListener{
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
-		
 		if(e.getKeyCode() == KeyEvent.VK_LEFT){
 			randomNewBlock.leftMove();
 			randomNewBlock.paintBlock(tetrisBoard);
