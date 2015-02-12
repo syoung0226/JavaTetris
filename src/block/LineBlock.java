@@ -14,7 +14,7 @@ public class LineBlock extends Block{
 	@Override
 	public void initialize() {
 		for(i=0; i<Block.CELLNUM; i++){
-			super.setCell(Color.blue, i+3, 0, i);
+			super.setInitializeCell(Color.blue, 4, i+3, i);
 		}
 	}
 
@@ -22,4 +22,7 @@ public class LineBlock extends Block{
 	public void changeShape() {
 	}
 
+	@Override
+	public void bottomMove() {
+	}
 }

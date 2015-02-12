@@ -17,8 +17,7 @@ public class Board extends Canvas{
 	private int i = 0;
 	
 	private Cell downBlockCells[];	
-//	TODO 바닥으로 떨어진 Cell은 fillCell에 채워져 색칠 되기 
-//	private Cell fillCell[];
+	private Cell fillBlockCells[];
 	
 	public Board() {
 		super();
@@ -35,6 +34,10 @@ public class Board extends Canvas{
 		this.downBlockCells = block.getCells();
 	}
 	
+	public void setFillBlock(Block block){
+		this.fillBlockCells = block.getCells();
+	}
+	
 	public void paint(Graphics g) {
 		for (i = 0; i < HEIGHT / CELL; i++) {
 			g.drawLine((int) 0, (int) (i * CELL), (int) (WIDTH), (int) (i * CELL));
@@ -47,6 +50,12 @@ public class Board extends Canvas{
 				g.setColor(downBlockCells[i].getColor());
 				g.fillRect(downBlockCells[i].getX()*CELL, downBlockCells[i].getY()*CELL, CELL, CELL);
 			}			
+		}
+		if(fillBlockCells != null){
+			for(i=0; i< downBlockCells.length; i++){
+				g.setColor(downBlockCells[i].getColor());
+				g.fillRect(downBlockCells[i].getX()*CELL, downBlockCells[i].getY()*CELL, CELL, CELL);
+			}
 		}
 	}
 }
