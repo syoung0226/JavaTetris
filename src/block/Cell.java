@@ -1,8 +1,10 @@
 package block;
 
-import java.awt.Color;
+import java.awt.*;
 
 public class Cell {
+    private static final int CELL = 30;
+
 	private Color color;
 	private int x;
 	private int y;
@@ -27,5 +29,9 @@ public class Cell {
 	public void leftX(){this.x-=1;}
 	public void downY(){this.y+=1;}
 	public void rigtX() {this.x+=1;}
-	
+
+    public void paintCell(Graphics g) {
+        g.setColor(color);
+        g.fillRect(x * CELL, y * CELL, CELL, CELL);
+    }
 }

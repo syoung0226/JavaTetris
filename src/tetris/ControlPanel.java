@@ -1,16 +1,15 @@
 package tetris;
 
-import java.awt.Color;
+import block.Block;
+import block.BlockFactory;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import javax.swing.JPanel;
-
-import block.Block;
-import block.LineBlock;
-
 @SuppressWarnings("serial")
-public class ControlPanel extends JPanel implements KeyListener{
+public class ControlPanel extends JPanel implements KeyListener, Block.DownCheckListener {
 	
 	//TODO button class 만들기
 	//TODO keyClass도 만들기?!?!?
@@ -23,28 +22,30 @@ public class ControlPanel extends JPanel implements KeyListener{
 	//TODO RandomBlock class 만들기
 	//TODO cell에 bottomMove 만들기
 		
-	private GameTimer timer;
+	private GameTimer timer = new GameTimer();
 	
-	private Board tetrisBoard;	
-	private Block randomNewBlock;
+	private Board board;
+	private Block block;
 	
 	public ControlPanel() {
-		super();
 		initialize();
 	}
 
 	private void initialize() {
 		setFocusable( true ); 
-		timer = new GameTimer();
-		randomNewBlock = new LineBlock();
-		tetrisBoard  = new Board();
-		
-		randomNewBlock.paintBlock(tetrisBoard);
-		
-		timer.setBlockBoard(randomNewBlock, tetrisBoard);
-		timer.timerStart();
-		
-		add(tetrisBoard);
+		block = BlockFactory.createBlock();
+
+		board = new Board();
+		board.setBlock(block);
+        board.repaint();
+
+        timer.setBoard(board);
+        timer.setBlock(block);
+		timer.start();
+
+        block.setDownCheckListener(this);
+
+		add(board);
 		addKeyListener(this);
 		setBackground(Color.lightGray);
 	}
@@ -57,19 +58,33 @@ public class ControlPanel extends JPanel implements KeyListener{
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if(e.getKeyCode() == KeyEvent.VK_LEFT){
-			randomNewBlock.leftMove();
-		}else if(e.getKeyCode() == KeyEvent.VK_RIGHT){
-			randomNewBlock.rightMove();
-		}else if(e.getKeyCode() == KeyEvent.VK_SPACE){
-			randomNewBlock.bottomMove();
-		}else if(e.getKeyCode() == KeyEvent.VK_DOWN){
-			randomNewBlock.downMove();
-		}else if(e.getKeyCode() == KeyEvent.VK_UP){
-			randomNewBlock.changeShape();
-		}else{
-			return;
-		}
-		randomNewBlock.paintBlock(tetrisBoard);
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_LEFT:
+                block.leftMove();
+                break;
+            case KeyEvent.VK_RIGHT:
+                block.rightMove();
+                break;
+            case KeyEvent.VK_SPACE:
+                block.bottomMove();
+                break;
+            case KeyEvent.VK_DOWN:
+                block.downMove();
+                break;
+            case KeyEvent.VK_UP:
+                block.changeShape();
+                break;
+        }
+
+        board.repaint();
 	}
+
+    @Override
+    public void arriveBottom() {
+        board.addCells(block.getCells());
+        block = BlockFactory.createBlock();
+        block.setDownCheckListener(this);
+        board.setBlock(block);
+        timer.setBlock(block);
+    }
 }

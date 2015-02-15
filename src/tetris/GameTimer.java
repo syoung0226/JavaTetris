@@ -1,17 +1,16 @@
 package tetris;
 
+import block.Block;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.Timer;
-
-import block.Block;
-
 public class GameTimer implements ActionListener{
 	private Timer timer;
-	private Block randomNewBlock = null;
-	private Board gameBoard = null;
-	
+	private Block block;
+	private Board board;
+
 	public GameTimer() {
 		initialize();
 	}
@@ -20,23 +19,26 @@ public class GameTimer implements ActionListener{
 		timer = new Timer(400, this);
 	}
 
-	public void setBlockBoard(Block block, Board board){
-		this.randomNewBlock = block;
-		this.gameBoard = board;
-	}
-	
-	@Override
+    public void setBlock(Block block) {
+        this.block = block;
+    }
+
+    public void setBoard(Board board) {
+        this.board = board;
+    }
+
+    @Override
 	public void actionPerformed(ActionEvent e) {
-		if(randomNewBlock!=null && gameBoard !=null){
-			randomNewBlock.downMove();
-			randomNewBlock.paintBlock(gameBoard);
+		if(block !=null && board !=null){
+			block.downMove();
+            board.repaint();
 		}
 	}
 	
-	public void timerStart() {
+	public void start() {
 		timer.start();
 	}
-	public void timerStop(){
+	public void stop(){
 		timer.stop();
 	}
 
