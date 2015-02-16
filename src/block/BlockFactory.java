@@ -1,8 +1,5 @@
 package block;
 
-/**
- * Created by junhoi on 2015. 2. 15..
- */
 public class BlockFactory {
 
     private BlockFactory() {

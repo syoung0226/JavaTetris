@@ -81,7 +81,7 @@ public class ControlPanel extends JPanel implements KeyListener, Block.DownCheck
 
     @Override
     public void arriveBottom() {
-        board.addCells(block.getCells());
+        board.addCells(block.getListCells());
         block = BlockFactory.createBlock();
         block.setDownCheckListener(this);
         board.setBlock(block);

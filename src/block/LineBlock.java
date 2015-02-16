@@ -3,8 +3,6 @@ package block;
 import java.awt.Color;
 
 public class LineBlock extends Block{
-
-	private int i = 0;
 	
 	public LineBlock() {
 		super();
@@ -13,7 +11,7 @@ public class LineBlock extends Block{
 
 	@Override
 	public void initialize() {
-		for(i=0; i<Block.CELLNUM; i++){
+		for(int i=0; i< super.getCellsSize(); i++){
 			super.setInitializeCell(Color.blue, 4, i+3, i);
 		}
 	}

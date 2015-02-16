@@ -15,7 +15,6 @@ public class Board extends Canvas {
 	public static final int WIDTH = 300;
 	public static final int HEIGHT = 600;
 	
-
     private Block block;
 	private List<Cell> fillBlockCells = new ArrayList<Cell>();
 

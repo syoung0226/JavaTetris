@@ -3,19 +3,18 @@ package block;
 import java.awt.*;
 import java.util.Arrays;
 
+import tetris.Board;
+
 public abstract class Block {
-	/*
-	 * TODO Cell[0] : 가장 왼쪽 블럭
-	 * Cell[1] : 가장 오른쪽 블럭
-	 * Cell[3] : 가장 바닥 블럭
-	 */
-	public static final int CELLNUM = 4;
-	public static final int edgeLeftX = 0;
-	public static final int edgeBottomY = 19;
-	public static final int edgeRightX = 9;
+
+	private final int CELLNUM = 4;
+	private final int edgeLeftX = 0;
+	private final int edgeBottomY = (Board.HEIGHT/Board.CELL)-1;
+	private final int edgeRightX = (Board.WIDTH/Board.CELL)-1;
 	
 	private Cell[] cells = new Cell[CELLNUM];
-    private DownCheckListener listener;
+
+	private DownCheckListener listener;
 
 	public Block(){	}
 	
@@ -48,15 +47,24 @@ public abstract class Block {
 	}
 
 	private boolean checkLeft(){
-        return cells[0].getX() != edgeLeftX;
+		for(Cell cell:cells){
+			if(cell.getX() == edgeLeftX) return false;
+		}
+		return true;
 	}
 
 	private boolean checkRight(){
-        return cells[1].getX() != edgeRightX;
+		for(Cell cell:cells){
+			if(cell.getX() == edgeRightX) return false;
+		}
+		return true;
 	}
 
 	private boolean checkDown(){
-        return cells[3].getY() != edgeBottomY;
+		for(Cell cell:cells){
+			if(cell.getY() == edgeBottomY) return false;
+		}
+		return true;
 	}
 
 	public void setInitializeCell(Color color, int x, int y, int index){
@@ -69,9 +77,13 @@ public abstract class Block {
         }
 	}
 
-    public java.util.List<Cell> getCells() {
+    public java.util.List<Cell> getListCells() {
         return Arrays.asList(cells);
     }
+    
+	public int getCellsSize() {
+		return cells.length;
+	}
 
     public void setDownCheckListener(DownCheckListener l) {
         listener = l;
