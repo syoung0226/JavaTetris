@@ -29,6 +29,8 @@ public class Cell {
 	public void leftX(){this.x-=1;}
 	public void downY(){this.y+=1;}
 	public void rigtX() {this.x+=1;}
+	
+	public void bottomDown(int tmp){this.y+=tmp;}
 
     public void paintCell(Graphics g) {
         g.setColor(color);

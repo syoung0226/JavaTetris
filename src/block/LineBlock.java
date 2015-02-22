@@ -12,15 +12,11 @@ public class LineBlock extends Block{
 	@Override
 	public void initialize() {
 		for(int i=0; i< super.getCellsSize(); i++){
-			super.setInitializeCell(Color.blue, 4, i+3, i);
+			super.setInitializeCell(Color.blue, 4, i, i);
 		}
 	}
 
 	@Override
 	public void changeShape() {
-	}
-
-	@Override
-	public void bottomMove() {
 	}
 }

@@ -11,17 +11,15 @@ import java.awt.event.KeyListener;
 @SuppressWarnings("serial")
 public class ControlPanel extends JPanel implements KeyListener, Block.DownCheckListener {
 	
+	//TODO board에 block 쌓고 없애기 만들기
+	
+	//TODO 각 block 마다  change 함수 만들기
+	
 	//TODO button class 만들기
 	//TODO keyClass도 만들기?!?!?
 	//TODO gameState를 알려주는 class 만들기
 
-	//TODO block이 바닥에 떨어지면 새로운 block이 나오도록 하기
-	//TODO board에 block 쌓고 없애기 만들기
 	
-	//TODO 각 block 마다 initialize 함수, change 함수 만들기
-	//TODO RandomBlock class 만들기
-	//TODO cell에 bottomMove 만들기
-		
 	private GameTimer timer = new GameTimer();
 	
 	private Board board;

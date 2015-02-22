@@ -20,7 +20,17 @@ public abstract class Block {
 	
 	public abstract void initialize();
 	public abstract void changeShape();
-	public abstract void bottomMove();
+	
+	public void bottomMove(){
+		int tmp = 0;
+		for(Cell cell : cells){
+			tmp = (tmp < cell.getY() ? cell.getY():tmp);
+		}
+		tmp = edgeBottomY - tmp;
+		for(Cell cell : cells){
+			cell.bottomDown(tmp);
+		}
+	};
 
 	public void downMove(){
 		if(checkDown()){
