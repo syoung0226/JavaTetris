@@ -17,6 +17,17 @@ public class LineBlock extends Block{
 	}
 
 	@Override
-	public void changeShape() {
+	public void changeShape() {	
+		if(super.getCell(0).getY()!=super.getCell(3).getY()){
+			if(super.getCell(3).getX()+ 3 <= (super.edgeRightX)){
+				for(int i=1; i < super.getCellsSize(); i++){
+					super.setCell(super.getCell(i).getX()+i, super.getCell(0).getY(), i);				
+				}				
+			}
+		}else{
+			for(int i=1; i < super.getCellsSize(); i++){
+				super.setCell(super.getCell(i).getX()-i, super.getCell(i).getY()-i, i);
+			}
+		}
 	}
 }
