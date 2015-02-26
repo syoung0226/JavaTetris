@@ -27,14 +27,29 @@ public abstract class Block {
 	public abstract void changeShape();
 	
 	public void bottomMove(){
-		int tmp = 0;
+		int tmp1 = 0;
+		int tmp2 = 19;
+		
 		for(Cell cell : cells){
-			tmp = (tmp < cell.getY() ? cell.getY():tmp);
+			tmp1 = (tmp1 < cell.getY() ? cell.getY():tmp1);
 		}
 		
-		tmp = edgeBottomY - tmp;
+		tmp1 = edgeBottomY - tmp1;
+		
+		//
+		for(Cell cell1 : fillBlockCells){
+			for(Cell cell2 : cells){
+				if(cell1.getX() == cell2.getX()){
+					tmp2 = ((tmp2 > cell1.getY()) ? cell1.getY() : tmp2);
+				}
+			}
+		}
+		tmp2 = edgeBottomY - tmp2 + 1;
+		tmp1 = tmp1-tmp2;
+		//
+								
 		for(Cell cell : cells){
-			cell.bottomDown(tmp);
+			cell.bottomDown(tmp1);
 		}
 	};
 
